@@ -1,5 +1,6 @@
 from Dice import Dice
 
+
 class Dicehand:
     def __init__(self, dice=None):
         self.dice = dice or [Dice(), Dice()]  # default to two dice
