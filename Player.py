@@ -1,4 +1,4 @@
-from DiceHand import DiceHand
+from Dicehand import Dicehand
 
 
 class Player:
@@ -6,7 +6,7 @@ class Player:
     def __init__(self, name):
         self.name = name
         self.score = 0
-        self.hand = DiceHand()
+        self.hand = Dicehand()
 
     def roll_dice(self):
         self.hand.roll_all()
@@ -16,7 +16,6 @@ class Player:
         for i in dice_indices:
             selected_dice.append(self.hand.dice[i])
             return selected_dice
-
 
     def get_score(self):
         return self.score
