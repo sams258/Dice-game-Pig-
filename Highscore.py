@@ -1,5 +1,17 @@
-class Highscore:
 
+class Highscore:
+    
+    def __init__(self):
+        self.high_scores = []
+
+    def add_score(self, name, score):
+        self.high_scores.append((name, score))
+
+    def get_high_scores(self):
+        return sorted(self.high_scores, key=lambda x: x[1], reverse=True)[:10]
+    
+
+    """
     def __init__(self, name, score):
         self.name = name
         self.score = score
@@ -26,4 +38,4 @@ class Highscore:
         return self.name + " " + str(self.score)
 
     def __repr__(self):
-        return self.name + " " + str(self.score)
+        return self.name + " " + str(self.score) """
