@@ -1,10 +1,24 @@
-class Histogram:
-    def __init__(self, values):
-        self.values = values
-        self.counts = [self.values.count(i) for i in range(1, 7)]
+from Print import Print
 
-    def __str__(self):
-        lines = []
-        for i in range(1, 7):
-            lines.append(f"{i}: {'*' * self.counts[i-1]}")
-        return "\n".join(lines)
+class Histogram:
+    rolls = {1: 0, 2: 0, 3: 0, 4: 0, 5: 0, 6: 0}
+
+    @classmethod
+    def add_roll(cls, roll):
+        cls.rolls[roll] += 1
+
+    @classmethod
+    def clear(cls):
+        cls.rolls = {1: 0, 2: 0, 3: 0, 4: 0, 5: 0, 6: 0}
+
+    @classmethod
+    def display(cls):
+        Print.print_sleep("Histogram of Rolls:")
+        for roll, count in cls.rolls.items():
+            Print.print_sleep(f"{roll}: {'*' * count}")
+
+    @classmethod
+    def set_cheat(cls):
+        cls.rolls = {1: 0, 2: 0, 3: 0, 4: 0, 5: 0, 6: 1}
+
+
