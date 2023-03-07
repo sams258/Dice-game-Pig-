@@ -1,37 +1,47 @@
+import json
 
-class Highscore:
-    
+class Scoreboard:
     def __init__(self):
-        self.high_scores = []
+        self.scores = {}
+        self.load_scores()
 
     def add_score(self, name, score):
-        self.high_scores.append((name, score))
+        if name in self.scores:
+            self.scores[name]["scores"].append(score)
+            self.scores[name]["games_played"] += 1
+        else:
+            self.scores[name] = {"scores": [score], "games_played": 1}
+        self.save_scores()
 
     def get_high_scores(self):
-        return sorted(self.high_scores, key=lambda x: x[1], reverse=True)[:10]
-    
+        high_scores = []
+        for name, data in self.scores.items():
+            high_score = max(data["scores"])
+            high_scores.append((name, high_score, data["games_played"]))
+        high_scores.sort(key=lambda x: x[1], reverse=True)
+        return high_scores
 
-    """
-    def __init__(self, name, score):
-        self.name = name
-        self.score = score
+    def load_scores(self):
+        try:
+            with open("scores.json", "r") as f:
+                self.scores = json.load(f)
+        except:
+            self.scores = {}
 
-    def __lessthan__(self, other):
-        return self.score < other.score
+    def save_scores(self):
+        with open("scores.json", "w") as f:
+            json.dump(self.scores, f)
 
-    def __greaterthan__(self, other):
-        return self.score > other.score
+    def get_player_score(self, name):
+        if name in self.scores:
+            return sum(self.scores[name]["scores"])
+        return 0
 
-    def __equal__(self, other):
-        return self.score == other.score
+    def change_player_name(self, old_name, new_name):
+        if old_name in self.scores:
+            self.scores[new_name] = self.scores.pop(old_name)
+            self.save_scores()
 
-    def __lessthanorequal__(self, other):
-        return self.score <= other.score
-
-    def __greaterthanorequal__(self, other):
-        return self.score >= other.score
-
-    def __notqual__(self, other):
-        return self.score != other.score
-
-
+    def clear(self):
+        self.scores = {}
+        self.save_scores()
