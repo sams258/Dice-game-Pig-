@@ -2,7 +2,6 @@ from Game import Game
 from Scoreboard import Scoreboard
 from Player import Player
 from ComputerPlayer import ComputerPlayer
-from Print import Print
 import sys
 import os
 
@@ -113,13 +112,12 @@ class Main:
         print("|" + " "*7 + "total is added to their score." + " "*27 + "|")
         print("|" + " "*64 + "|")
         print("+" + "-"*64 + "+")
-        print("press enter to continue...")
-
+        input("\nPress Enter to continue...")
         
     def show_high_scores(self):
         os.system('cls')
         print("+" + "-"*35 + "+")
-        print("|" + " "*int((35 - len("HIGH SCORES") - len(self.player_name)) / 2) + "HIGH SCORES" + " "*int((35 - len("HIGH SCORES") - len(self.player_name)) / 2) + "|")
+        print("|" + " "*int((36 - len("HIGH SCORES") - len(self.player_name)) / 2) + "HIGH SCORES" + " "*int((35 - len("HIGH SCORES") - len(self.player_name)) / 2) + "|")
         print("+" + "-"*35 + "+")
         high_scores = self.scoreboard.get_high_scores()
         if not high_scores:
