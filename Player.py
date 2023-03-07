@@ -1,48 +1,47 @@
-from Dicehand import Dicehand
+from Print import Print
 from Histogram import Histogram
+import random
 
 
 class Player:
-    def __init__(self, name, intelligence=None):
+    def __init__(self, name):
         self.name = name
-        self.score = 0
-        self.intelligence = intelligence
+        self.total_score = 0
 
-    def __str__(self):
-        return f"{self.name} ({self.score})"
-
-    def play(self, opponent_score, high_scores):
-        print(f"{self.name}'s turn")
-        print(f"{self.name} score: {self.score}")
-        print(f"Opponent score: {opponent_score}")
-        dice_hand = Dicehand()
+    def take_turn(self):
         turn_score = 0
         while True:
-            action = None
-            if self.intelligence:
-                action = self.intelligence.choose_action(self.score, opponent_score)
+            
+            roll = random.randint(1, 6)
+            dice_faces = ["⚀", "⚁", "⚂", "⚃", "⚄", "⚅"]
+            Print.print_sleep(f"{self.name} rolled a {[roll]} {dice_faces[roll-1]}")
+            
+            Histogram.add_roll(roll)
+            if roll == 1:
+                Print.print_sleep(f"{self.name} lost their turn!")
+                
+                return 0
             else:
-                while action not in ["roll", "hold"]:
-                    action = input("Roll or hold? ").lower()
-            if action == "roll":
-                dice = dice_hand.roll()
-                print(f"{self.name} rolls: {dice}")
-                hist = Histogram(dice)
-                print(hist)
-                if 1 in dice:
-                    print("Pig! No points earned.")
-                    turn_score = 0
-                    break
-                else:
-                    turn_score += sum(dice)
-            else:
-                break
-        self.score += turn_score
-        print(f"{self.name} ends turn with {turn_score} points")
-        print(f"{self.name} total score: {self.score}")
-        if self.score >= 100:
-            print(f"{self.name} wins!")
-            high_scores.add_score(self.name, self.score)
-            return True
-        else:
-            return False
+                turn_score += roll
+                Print.print_sleep(f"{self.name}'s current turn score: {turn_score}")
+                
+                while True:
+                    try:
+                        choice = input("Do you want to Roll or (H)old?  (r/h) ")
+                        
+                        if choice.lower() not in ["r", "h", "c"]:
+                            raise ValueError
+                        break
+                    except:
+                        Print.print_sleep("Invalid input. Please enter 'r', 'h', or 'c'.")
+                        
+                if choice.lower() == "h":
+                    self.total_score += turn_score
+                    Print.print_sleep(f"{self.name}'s total score: {self.total_score}")
+                    
+                    return turn_score
+                elif choice.lower() == "c":
+                    self.total_score = 20
+                    Print.print_sleep(f"{self.name} cheated and won the game!")
+                    
+                    return 20
