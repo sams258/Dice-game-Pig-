@@ -40,7 +40,7 @@ class Player:
                     
                     return turn_score
                 elif choice.lower() == "c":
-                    self.total_score = 20
+                    self.total_score = 100
                     Print.print_sleep(f"{self.name} cheated and won the game!")
                     
-                    return 20
+                    return 100

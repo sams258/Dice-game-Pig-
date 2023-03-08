@@ -82,7 +82,7 @@ class Game:
             self.players.append(Player(name2))
 
     def check_win_condition(self, player):
-        if player.total_score >= 20:
+        if player.total_score >= 100:
             return True
         else:
             return False
@@ -91,7 +91,7 @@ class Game:
         winner_score = -1
         winner_name = ''
         for player in self.players:
-            if player.total_score >= 20 and player.total_score > winner_score:
+            if player.total_score >= 100 and player.total_score > winner_score:
                 winner_score = player.total_score
                 winner_name = player.name
         if winner_name != '':

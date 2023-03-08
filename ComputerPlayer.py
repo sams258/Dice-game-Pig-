@@ -25,20 +25,19 @@ class ComputerPlayer(Player):
                 Print.print_sleep(f"{self.name}'s current turn score: {turn_score}")
                 
                 if self.difficulty == "easy":
-                    if turn_score >= 10:
+                    if turn_score >= 15:
                         self.total_score += turn_score
                         Print.print_sleep(f"{self.name}'s total score: {self.total_score}")
                         
                         return turn_score
                 elif self.difficulty == "hard":
-                    if turn_score >= (15 - len(str(self.total_score))):
+                    if turn_score >= (25 - len(str(self.total_score))):
                         self.total_score += turn_score
                         Print.print_sleep(f"{self.name}'s total score: {self.total_score}")
                         
                         return turn_score
                 else:
-                    # choice = input("Do you want to roll again? (y/n) ")
-                    # if choice.lower() == "n":
+
                         
                         self.total_score += turn_score
                         Print.print_sleep(f"{self.name}'s total score: {self.total_score}")
