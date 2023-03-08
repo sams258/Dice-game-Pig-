@@ -3,6 +3,7 @@ from ComputerPlayer import ComputerPlayer
 from Print import Print
 from Histogram import Histogram
 from Scoreboard import Scoreboard
+import sys
 
 class Game:
     def __init__(self):
@@ -126,3 +127,4 @@ class Game:
             self.start()
         else:
             Print.print_sleep("\nThanks for playing!")
+            sys.exit()
