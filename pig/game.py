@@ -1,8 +1,8 @@
-from pig.Player import Player
-from pig.ComputerPlayer import ComputerPlayer
-from pig.Print import Print
-from pig.Histogram import Histogram
-from pig.Scoreboard import Scoreboard
+from pig.player import Player
+from pig.computerPlayer import ComputerPlayer
+from pig.print import Print
+from pig.histogram import Histogram
+from pig.scoreboard import Scoreboard
 import sys
 
 

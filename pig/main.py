@@ -1,7 +1,7 @@
-from pig.Game import Game
-from pig.Scoreboard import Scoreboard
-from pig.Player import Player
-from pig.ComputerPlayer import ComputerPlayer
+from pig.game import Game
+from pig.scoreboard import Scoreboard
+from pig.player import Player
+from pig.computerPlayer import ComputerPlayer
 import sys
 import os
 

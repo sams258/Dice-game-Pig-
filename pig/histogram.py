@@ -1,4 +1,4 @@
-from pig.Print import Print
+from pig.print import Print
 
 
 class Histogram:

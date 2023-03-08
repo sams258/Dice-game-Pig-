@@ -1,6 +1,6 @@
-from pig.Player import Player
-from pig.Print import Print
-from pig.Histogram import Histogram
+from pig.player import Player
+from pig.print import Print
+from pig.histogram import Histogram
 import random
 
 

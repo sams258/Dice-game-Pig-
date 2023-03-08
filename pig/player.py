@@ -1,5 +1,5 @@
-from pig.Print import Print
-from pig.Histogram import Histogram
+from pig.print import Print
+from pig.histogram import Histogram
 import random
 
 
