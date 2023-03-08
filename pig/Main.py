@@ -32,8 +32,9 @@ class Main:
                 choice = int(input("\nEnter your choice: "))
                 if choice not in [1, 2, 3, 4, 5]:
                     raise ValueError
-            except:
-                print("\nInvalid input. Please enter a number between 1 and 5.\n")
+            except ValueError:
+                print("\nInvalid input. "
+                      "Please enter a number between 1 and 5.\n")
                 continue
 
             if choice == 1:
@@ -54,32 +55,35 @@ class Main:
             try:
                 mode_choice = int(
                     input(
-                        "\nPlay against Computer or Human? choose 1 for computer or 2 for human: "
+                        "\nPlay against Computer or Human? "
+                        "choose 1 for computer or 2 for human: "
                     )
                 )
                 if mode_choice not in [1, 2]:
                     raise ValueError
                 break
-            except:
+            except ValueError:
                 print("\nInvalid input. Please enter 1 or 2.\n")
 
         if mode_choice == 1:
             while True:
                 try:
                     difficulty_choice = int(
-                        input("\nChoose difficulty: 1 for easy or 2 for hard: ")
+                        input("\nChoose difficulty: "
+                              "1 for easy or 2 for hard: ")
                     )
                     if difficulty_choice not in [1, 2]:
                         raise ValueError
                     break
-                except:
+                except ValueError:
                     print("\nInvalid input. Please enter 1 or 2.\n")
 
             if not self.player_name:
                 self.player_name = input("\nEnter your name: ")
             self.game.players.append(Player(self.player_name))
             self.game.players.append(
-                ComputerPlayer("Computer", "easy" if difficulty_choice == 1 else "hard")
+                ComputerPlayer("Computer", "easy"
+                               "" if difficulty_choice == 1 else "hard")
             )
 
         elif mode_choice == 2:
@@ -143,9 +147,11 @@ class Main:
         )
         print("|" + " " * 64 + "|")
         print(
-            "|" + " " * 7 + "If a player chooses to hold their turn, " + " " * 17 + "|"
+            "|" + " " * 7 + "If a player chooses to hold their turn, "
+            "" + " " * 17 + "|"
         )
-        print("|" + " " * 7 + "total is added to their score." + " " * 27 + "|")
+        print("|" + " " * 7 + "total is added to their score."
+              "" + " " * 27 + "|")
         print("|" + " " * 64 + "|")
         print("+" + "-" * 64 + "+")
         input("\nPress Enter to continue...")
@@ -167,7 +173,8 @@ class Main:
             print("+" + "-" * 32 + "+")
             return
         for i, score in enumerate(high_scores):
-            print(f"| {i+1}. {score[0]:<{25-len(self.player_name)}} {score[1]:>4} |")
+            print(f"| {i+1}. {score[0]:<{25-len(self.player_name)}}"
+                  "{score[1]:>4} |")
         print("+" + "-" * 35 + "+")
 
     def restart_game(self):

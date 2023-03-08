@@ -22,7 +22,8 @@ class ComputerPlayer(Player):
                 return 0
             else:
                 turn_score += roll
-                Print.print_sleep(f"{self.name}'s current turn score: {turn_score}")
+                Print.print_sleep(f"{self.name}'s current turn score: "
+                                  "{turn_score}")
 
                 if self.difficulty == "easy":
                     if turn_score >= 15:
@@ -42,6 +43,7 @@ class ComputerPlayer(Player):
                         return turn_score
                 else:
                     self.total_score += turn_score
-                    Print.print_sleep(f"{self.name}'s total score: {self.total_score}")
+                    Print.print_sleep(f"{self.name}'s total score: "
+                                      "{self.total_score}")
 
                     return turn_score

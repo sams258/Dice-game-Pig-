@@ -26,7 +26,7 @@ class Scoreboard:
         try:
             with open("scores.json", "r") as f:
                 self.scores = json.load(f)
-        except:
+        except FileNotFoundError:
             self.scores = {}
 
     def save_scores(self):

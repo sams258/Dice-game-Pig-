@@ -43,30 +43,38 @@ class Game:
                     continue
                 while True:
                     try:
-                        new_name = input("\nDo you want to change your name? (y/n) ")
+                        new_name = input("\nDo you want to change your name?"
+                                         "(y/n) ")
                         if new_name.lower() == "y":
                             new_name = input("\nEnter your new name: ")
-                            player_name_stats = self.scoreboard.scores.pop(player.name)
+                            player_name_stats = (
+                                self.scoreboard.scores.pop(player.name)
+                            )
                             player.name = new_name
-                            self.scoreboard.scores[new_name] = player_name_stats
+                            self.scoreboard.scores[new_name] = (
+                                player_name_stats
+                            )
                         elif new_name.lower() == "n":
                             break
                         else:
                             raise ValueError
                     except ValueError:
-                        Print.print_sleep("\nInvalid input. Please enter 'y' or 'n'.")
+                        Print.print_sleep("\nInvalid input. Please enter "
+                                          "'y' or 'n'.")
             return
         while True:
             try:
                 game_mode = input(
-                    "\nDo you want to play against the computer or another human player? Choose 1 for computer or 2 for human. "
+                    "\nDo you want to play against the computer or another"
+                    "human player? Choose 1 for computer or 2 for human. "
                 )
                 if game_mode not in ["1", "2"]:
                     raise ValueError
                 break
-            except:
+            except ValueError:
                 Print.print_sleep(
-                    "\nInvalid input. Please choose 1 for computer or 2 for human."
+                    "\nInvalid input. Please choose "
+                    "1 for computer or 2 for human."
                 )
         if game_mode == "1":
             while True:
@@ -77,9 +85,10 @@ class Game:
                     if difficulty not in ["1", "2"]:
                         raise ValueError
                     break
-                except:
+                except ValueError:
                     Print.print_sleep(
-                        "\nInvalid input. Please choose 1 for easy or 2 for hard."
+                        "\nInvalid input. Please "
+                        "choose 1 for easy or 2 for hard."
                     )
             name = input("\nEnter your name: ")
             self.players.append(Player(name))
@@ -124,7 +133,7 @@ class Game:
                 if choice.lower() not in ["y", "n"]:
                     raise ValueError
                 break
-            except:
+            except ValueError:
                 Print.print_sleep("\nInvalid input. Please enter 'y' or 'n'.")
         if choice.lower() == "y":
             self.players.clear()

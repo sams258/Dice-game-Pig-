@@ -21,23 +21,26 @@ class Player:
                 return 0
             else:
                 turn_score += roll
-                Print.print_sleep(f"{self.name}'s current turn score: {turn_score}")
+                Print.print_sleep(f"{self.name}'s current "
+                                  "turn score: {turn_score}")
 
                 while True:
                     try:
-                        choice = input("Do you want to Roll or (H)old?  (r/h) ")
+                        choice = input("Do you want to Roll or Hold?"
+                                       "(r/h) ")
 
                         if choice.lower() not in ["r", "h", "c"]:
                             raise ValueError
                         break
-                    except:
+                    except ValueError:
                         Print.print_sleep(
                             "Invalid input. Please enter 'r', 'h', or 'c'."
                         )
 
                 if choice.lower() == "h":
                     self.total_score += turn_score
-                    Print.print_sleep(f"{self.name}'s total score: {self.total_score}")
+                    Print.print_sleep(f"{self.name}'s total score: "
+                                      "{self.total_score}")
 
                     return turn_score
                 elif choice.lower() == "c":
