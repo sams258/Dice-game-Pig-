@@ -13,8 +13,7 @@ class Player:
         while True:
             
             roll = random.randint(1, 6)
-            dice_faces = ["⚀", "⚁", "⚂", "⚃", "⚄", "⚅"]
-            Print.print_sleep(f"{self.name} rolled a {[roll]} {dice_faces[roll-1]}")
+            Print.print_sleep(f"{self.name} rolled a {[roll]}")
             
             Histogram.add_roll(roll)
             if roll == 1:
