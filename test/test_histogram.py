@@ -34,6 +34,36 @@ class TestHistogram(unittest.TestCase):
         with self.assertRaises(TypeError):
             Histogram.set_cheat(1)
 
+    def test_display(self):
+        Histogram.add_roll(1)
+        Histogram.add_roll(2)
+        Histogram.add_roll(3)
+        Histogram.add_roll(4)
+        Histogram.add_roll(5)
+        Histogram.add_roll(6)
+        expected_output = "\nHistogram of Rolls:" + "\n1: *" + "\n2: *" + "\n3: *" + "\n4: *" + "\n5: *" + "\n6: *"
+
+    def test_display_with_cheat(self):
+        Histogram.set_cheat()
+        expected_output = "\nHistogram of Rolls:" + "\n1: " + "\n2: " + "\n3: " + "\n4: " + "\n5: " + "\n6: *"
+
+    def test_display_with_no_rolls(self):
+        expected_output = "\nHistogram of Rolls:" + "\n1: " + "\n2: " + "\n3: " + "\n4: " + "\n5: " + "\n6: "
+
+    def test_display_with_multiple_rolls(self):
+        Histogram.add_roll(1)
+        Histogram.add_roll(1)
+        Histogram.add_roll(2)
+        Histogram.add_roll(2)
+        Histogram.add_roll(3)
+        Histogram.add_roll(3)
+        Histogram.add_roll(4)
+        Histogram.add_roll(4)
+        Histogram.add_roll(5)
+        Histogram.add_roll(5)
+        Histogram.add_roll(6)
+        Histogram.add_roll(6)
+        expected_output = "\nHistogram of Rolls:" + "\n1: **" + "\n2: **" + "\n3: **" + "\n4: **" + "\n5: **" + "\n6: **"
 
 if __name__ == "__main__":
     unittest.main(argv=[""], exit=False)

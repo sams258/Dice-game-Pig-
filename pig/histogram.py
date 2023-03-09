@@ -1,3 +1,5 @@
+"""This module contains the Histogram class."""
+
 from print import Print
 
 

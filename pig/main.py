@@ -1,3 +1,6 @@
+"""This module contains the Main class."""
+
+
 import sys
 import os
 from game import Game

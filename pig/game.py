@@ -1,3 +1,5 @@
+"""This module contains the Game class."""
+
 import sys
 from player import Player
 from computer_player import ComputerPlayer

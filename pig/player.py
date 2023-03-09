@@ -1,3 +1,5 @@
+"""This module contains the Player class."""
+
 import random
 from print import Print
 from histogram import Histogram
@@ -56,7 +58,7 @@ class Player:
                 if choice.lower() == "h":
                     self.total_score += turn_score
                     Print.print_sleep(f"{self.name}'s total score: "
-                                      "{self.total_score}")
+                                      f"{self.total_score}")
 
                     return turn_score
                 elif choice.lower() == "c":

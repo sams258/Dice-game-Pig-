@@ -1,24 +1,25 @@
+"""This module contains a custom print function."""
+
 import time
 
+
+# pylint: disable=R0903
 class Print:
-    """
-    A class for printing output with a one-second delay.
-    """
+    """This class contains a custom print function."""
 
     def __init__(self):
-        """
-        Initialize a new Print instance.
-        """
-        pass
+        """Initialize the function."""
 
     @staticmethod
     def print_sleep(*args, **kwargs):
-        """
-        Print the specified arguments with an extra newline character and a one-second delay.
+        """Print the specified arguments.
 
+        With an extra newline character and a one-second delay.
         Args:
-            *args: Any number of positional arguments to be passed to the print function.
-            **kwargs: Any keyword arguments to be passed to the print function.
+            *args: Any number of positional arguments
+            to be passed to the print function.
+            **kwargs: Any keyword arguments
+            to be passed to the print function.
 
         Returns:
             None.

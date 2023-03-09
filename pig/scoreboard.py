@@ -40,8 +40,8 @@ class Scoreboard:
     def load_scores(self):
         """_summary_."""
         try:
-            with open("scores.json", "r") as f:
-                self.scores = json.load(f)
+            with open("scores.json", "r", encoding='utf-8') as file:
+                self.scores = json.load(file)
         except FileNotFoundError:
             self.scores = {}
 
