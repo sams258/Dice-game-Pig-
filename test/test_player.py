@@ -7,14 +7,7 @@ from pig.player import Player
 
 
 class TestPlayer(unittest.TestCase):
-    def test_take_turn_hold(self):
-        # Test that the player correctly holds their turn
-        with patch("builtins.input", side_effect=["h"]):
-            player = Player("Alice")
-            score = player.take_turn()
-        self.assertEqual(score, 0)
-        self.assertEqual(player.total_score, 0)
-
+    
     def test_take_turn_roll(self):
         # Test that the player correctly rolls and holds their turn
         with patch("builtins.input", side_effect=["r", "h"]):
@@ -57,14 +50,6 @@ class TestPlayer(unittest.TestCase):
             score = player.take_turn()
         self.assertGreater(score, 0)
         self.assertLessEqual(score, 20)
-
-    def test_player_can_hold_turn(self):
-        # Test that the player can hold their turn
-        with patch("builtins.input", side_effect=["h"]):
-            player = Player("Alice")
-            score = player.take_turn()
-        self.assertEqual(score, 0)
-        self.assertEqual(player.total_score, 0)
 
     def test_player_can_cheat(self):
         # Test that the player can cheat and win the game

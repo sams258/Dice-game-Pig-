@@ -1,12 +1,3 @@
-<<<<<<< HEAD:pig/Game.py
-"""This module contains the Game class."""
-=======
-from pig.player import Player
-from pig.computerPlayer import ComputerPlayer
-from pig.print import Print
-from pig.histogram import Histogram
-from pig.scoreboard import Scoreboard
->>>>>>> 1a3437d6689f64f9adbca65e4ffa5958ec163b0d:pig/game.py
 import sys
 from player import Player
 from computer_player import ComputerPlayer
@@ -58,21 +49,6 @@ class Game:
                     continue
                 while True:
                     try:
-<<<<<<< HEAD:pig/Game.py
-                        new_name = input(
-                            "\nDo you want to change your name? (y/n) ")
-                        if new_name.lower() == "y":
-                            new_name = input("\nEnter your new name: ")
-                            if player.name in self.scoreboard.scores:
-                                player_name_stats = (
-                                    self.scoreboard.scores.pop(player.name))
-                                player.name = new_name
-                                self.scoreboard.scores[new_name] = (
-                                    player_name_stats)
-                            else:
-                                player.name = new_name
-                            break
-=======
                         new_name = input("\nDo you want to change your name?"
                                          "(y/n) ")
                         if new_name.lower() == "y":
@@ -84,7 +60,6 @@ class Game:
                             self.scoreboard.scores[new_name] = (
                                 player_name_stats
                             )
->>>>>>> 1a3437d6689f64f9adbca65e4ffa5958ec163b0d:pig/game.py
                         elif new_name.lower() == "n":
                             break
                         else:
@@ -97,7 +72,7 @@ class Game:
             try:
                 game_mode = input(
                     "\nDo you want to play against the computer or another"
-                    "human player? Choose 1 for computer or 2 for human. "
+                    " human player? Choose 1 for computer or 2 for human. "
                 )
                 if game_mode not in ["1", "2"]:
                     raise ValueError

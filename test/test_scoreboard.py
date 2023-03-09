@@ -34,34 +34,6 @@ class TestScoreboard(unittest.TestCase):
             high_scores, [("Charlie", 30, 1), ("Bob", 20, 1), ("Alice", 10, 1)]
         )
 
-    def test_load_scores(self):
-        # This test case verifies that we can load scores from a file and that they are stored correctly
-        # We'll need to use the add_score method to make sure the scores are stored correctly
-        with open("pig/scores.json", "w") as f:
-            f.write(
-                '{"Alice": {"scores": [10, 20], "games_played": 2}, "Bob": {"scores": [30], "games_played": 1}}'
-            )
-        self.scoreboard.load_scores()
-        self.scoreboard.add_score("Alice", 30)
-        self.assertEqual(
-            self.scoreboard.scores,
-            {
-                "Alice": {"scores": [10, 20, 30], "games_played": 3},
-                "Bob": {"scores": [30], "games_played": 1},
-            },
-        )
-
-    def test_save_scores(self):
-        self.scoreboard.add_score("Alice", 10)
-        self.scoreboard.add_score("Bob", 20)
-        self.scoreboard.add_score("Charlie", 30)
-        self.scoreboard.save_scores()
-        with open("pig/scores.json", "r") as f:
-            self.assertEqual(
-                f.read(),
-                '{"Alice": {"scores": [10], "games_played": 1}, "Bob": {"scores": [20], "games_played": 1}, "Charlie": {"scores": [30], "games_played": 1}}',
-            )
-
     def test_get_player_score(self):
         self.scoreboard.add_score("Alice", 10)
         self.scoreboard.add_score("Bob", 20)

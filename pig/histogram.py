@@ -1,9 +1,4 @@
-<<<<<<< HEAD:pig/Histogram.py
-"""_summary_."""
 from print import Print
-=======
-from pig.print import Print
->>>>>>> 1a3437d6689f64f9adbca65e4ffa5958ec163b0d:pig/histogram.py
 
 
 class Histogram:

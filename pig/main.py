@@ -1,11 +1,3 @@
-<<<<<<< HEAD:pig/Main.py
-"""This module contains the Main class which is the entry point of the game."""
-=======
-from pig.game import Game
-from pig.scoreboard import Scoreboard
-from pig.player import Player
-from pig.computerPlayer import ComputerPlayer
->>>>>>> 1a3437d6689f64f9adbca65e4ffa5958ec163b0d:pig/main.py
 import sys
 import os
 from game import Game
@@ -194,11 +186,7 @@ class Main:
             return
         for i, score in enumerate(high_scores):
             print(f"| {i+1}. {score[0]:<{25-len(self.player_name)}}"
-<<<<<<< HEAD:pig/Main.py
-                  f"{score[1]:>4} |")
-=======
                   "{score[1]:>4} |")
->>>>>>> 1a3437d6689f64f9adbca65e4ffa5958ec163b0d:pig/main.py
         print("+" + "-" * 35 + "+")
 
     def restart_game(self):
