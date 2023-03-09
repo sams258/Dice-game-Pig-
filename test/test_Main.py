@@ -1,11 +1,14 @@
+import sys
+
+sys.path.append("pig")
 import unittest
 from unittest.mock import patch
 from io import StringIO
-from pig.Main import Main
-from pig.Scoreboard import Scoreboard
-from pig.Game import Game
-from pig.Player import Player
-from pig.ComputerPlayer import ComputerPlayer
+from pig.main import Main
+from pig.scoreboard import Scoreboard
+from pig.game import Game
+from pig.player import Player
+from pig.computerplayer import ComputerPlayer
 
 
 class TestMain(unittest.TestCase):

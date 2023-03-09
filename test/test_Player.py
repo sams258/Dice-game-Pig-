@@ -1,6 +1,9 @@
+import sys
+
+sys.path.append("pig")
 import unittest
 from unittest.mock import patch
-from pig.Player import Player
+from pig.player import Player
 
 
 class TestPlayer(unittest.TestCase):

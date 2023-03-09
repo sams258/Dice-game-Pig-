@@ -1,5 +1,7 @@
+import sys
+sys.path.append("pig")
 import unittest
-from pig.Scoreboard import Scoreboard
+from pig.scoreboard import Scoreboard
 
 
 class TestScoreboard(unittest.TestCase):
@@ -35,7 +37,7 @@ class TestScoreboard(unittest.TestCase):
     def test_load_scores(self):
         # This test case verifies that we can load scores from a file and that they are stored correctly
         # We'll need to use the add_score method to make sure the scores are stored correctly
-        with open("scores.json", "w") as f:
+        with open("pig/scores.json", "w") as f:
             f.write(
                 '{"Alice": {"scores": [10, 20], "games_played": 2}, "Bob": {"scores": [30], "games_played": 1}}'
             )
@@ -54,7 +56,7 @@ class TestScoreboard(unittest.TestCase):
         self.scoreboard.add_score("Bob", 20)
         self.scoreboard.add_score("Charlie", 30)
         self.scoreboard.save_scores()
-        with open("scores.json", "r") as f:
+        with open("pig/scores.json", "r") as f:
             self.assertEqual(
                 f.read(),
                 '{"Alice": {"scores": [10], "games_played": 1}, "Bob": {"scores": [20], "games_played": 1}, "Charlie": {"scores": [30], "games_played": 1}}',

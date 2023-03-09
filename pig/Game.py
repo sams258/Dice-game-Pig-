@@ -1,25 +1,31 @@
-from pig.Player import Player
-from pig.ComputerPlayer import ComputerPlayer
-from pig.Print import Print
-from pig.Histogram import Histogram
-from pig.Scoreboard import Scoreboard
+"""This module contains the Game class."""
 import sys
+from player import Player
+from computer_player import ComputerPlayer
+from print import Print
+from histogram import Histogram
+from scoreboard import Scoreboard
 
 
 class Game:
+    """_summary_."""
+
     def __init__(self):
+        """_summary_."""
         self.scoreboard = Scoreboard()
         self.players = []
         self.round = 0
         self.game_over = False
 
     def start(self):
+        """_summary_."""
         while not self.game_over:
             self.round += 1
             self.play_round()
         self.end_game()
 
     def play_round(self):
+        """_summary_."""
         self.add_players()
         Print.print_sleep("\nWelcome to the Pig dice game!")
         Print.print_sleep(f"\nRound {self.round}:")
@@ -36,37 +42,48 @@ class Game:
                     return
 
     def add_players(self):
+        """_summary_."""
         if self.players:
             for i, player in enumerate(self.players):
-                Print.print_sleep(f"Player {i + 1}: {player.name}")
+                Print.print_sleep(f"\nPlayer {i + 1}: {player.name}")
                 if isinstance(player, ComputerPlayer):
                     continue
                 while True:
                     try:
-                        new_name = input("\nDo you want to change your name? (y/n) ")
+                        new_name = input(
+                            "\nDo you want to change your name? (y/n) ")
                         if new_name.lower() == "y":
                             new_name = input("\nEnter your new name: ")
-                            player_name_stats = self.scoreboard.scores.pop(player.name)
-                            player.name = new_name
-                            self.scoreboard.scores[new_name] = player_name_stats
+                            if player.name in self.scoreboard.scores:
+                                player_name_stats = (
+                                    self.scoreboard.scores.pop(player.name))
+                                player.name = new_name
+                                self.scoreboard.scores[new_name] = (
+                                    player_name_stats)
+                            else:
+                                player.name = new_name
+                            break
                         elif new_name.lower() == "n":
                             break
                         else:
                             raise ValueError
                     except ValueError:
-                        Print.print_sleep("\nInvalid input. Please enter 'y' or 'n'.")
+                        Print.print_sleep("\nInvalid input. Please enter "
+                                          "'y' or 'n'.")
             return
         while True:
             try:
                 game_mode = input(
-                    "\nDo you want to play against the computer or another human player? Choose 1 for computer or 2 for human. "
+                    "\nDo you want to play against the computer or another"
+                    "human player? Choose 1 for computer or 2 for human. "
                 )
                 if game_mode not in ["1", "2"]:
                     raise ValueError
                 break
-            except:
+            except ValueError:
                 Print.print_sleep(
-                    "\nInvalid input. Please choose 1 for computer or 2 for human."
+                    "\nInvalid input. Please choose "
+                    "1 for computer or 2 for human."
                 )
         if game_mode == "1":
             while True:
@@ -77,9 +94,10 @@ class Game:
                     if difficulty not in ["1", "2"]:
                         raise ValueError
                     break
-                except:
+                except ValueError:
                     Print.print_sleep(
-                        "\nInvalid input. Please choose 1 for easy or 2 for hard."
+                        "\nInvalid input. Please "
+                        "choose 1 for easy or 2 for hard."
                     )
             name = input("\nEnter your name: ")
             self.players.append(Player(name))
@@ -91,12 +109,21 @@ class Game:
             self.players.append(Player(name2))
 
     def check_win_condition(self, player):
+        """_summary_.
+
+        Args:
+            player (_type_): _description_
+
+        Returns:
+            _type_: _description_
+        """
         if player.total_score >= 100:
             return True
         else:
             return False
 
     def end_game(self):
+        """_summary_."""
         winner_score = -1
         winner_name = ""
         for player in self.players:
@@ -112,19 +139,20 @@ class Game:
         high_scores = self.scoreboard.get_high_scores()
         Print.print_sleep("\nHighest Round Score:")
         for score in high_scores:
-            Print.print_sleep(f"{score[0]}: {score[1]}")
+            print(f"{score[0]}: {score[1]}")
         Histogram.display()
 
         self.play_again()
 
     def play_again(self):
+        """_summary_."""
         while True:
             try:
                 choice = input("\nDo you want to play again? (y/n) ")
                 if choice.lower() not in ["y", "n"]:
                     raise ValueError
                 break
-            except:
+            except ValueError:
                 Print.print_sleep("\nInvalid input. Please enter 'y' or 'n'.")
         if choice.lower() == "y":
             self.players.clear()

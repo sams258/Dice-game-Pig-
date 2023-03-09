@@ -1,6 +1,8 @@
+import sys
 import unittest
+sys.path.append("pig")
 from unittest.mock import patch
-from pig.ComputerPlayer import ComputerPlayer
+from pig.computer_player import ComputerPlayer
 
 
 class TestComputerPlayer(unittest.TestCase):

@@ -1,10 +1,13 @@
+import sys
+
+sys.path.append("pig")
 import unittest
 from unittest.mock import call
 import io
 import sys
 import time
 from unittest.mock import patch
-from pig.Print import Print
+from pig.print import Print
 
 
 class TestPrint(unittest.TestCase):

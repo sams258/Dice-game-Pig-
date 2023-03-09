@@ -1,5 +1,8 @@
+import sys
+
+sys.path.append("pig")
 import unittest
-from pig.Histogram import Histogram
+from pig.histogram import Histogram
 from unittest.mock import patch
 from io import StringIO
 
