@@ -1,5 +1,4 @@
 import sys
-
 sys.path.append("pig")
 import unittest
 from unittest.mock import patch
@@ -8,7 +7,7 @@ from pig.main import Main
 from pig.scoreboard import Scoreboard
 from pig.game import Game
 from pig.player import Player
-from pig.computerplayer import ComputerPlayer
+from pig.computer_player import ComputerPlayer
 
 
 class TestMain(unittest.TestCase):

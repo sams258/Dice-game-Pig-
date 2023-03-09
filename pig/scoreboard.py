@@ -40,8 +40,13 @@ class Scoreboard:
     def load_scores(self):
         """_summary_."""
         try:
+<<<<<<< HEAD:pig/Scoreboard.py
             with open("scores.json", "r", encoding='utf-8') as file:
                 self.scores = json.load(file)
+=======
+            with open("scores.json", "r") as f:
+                self.scores = json.load(f)
+>>>>>>> 1a3437d6689f64f9adbca65e4ffa5958ec163b0d:pig/scoreboard.py
         except FileNotFoundError:
             self.scores = {}
 

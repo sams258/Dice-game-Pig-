@@ -6,7 +6,7 @@ from unittest.mock import patch
 from io import StringIO
 from pig.game import Game
 from pig.player import Player
-from pig.computerplayer import ComputerPlayer
+from pig.computer_player import ComputerPlayer
 
 
 class TestGame(unittest.TestCase):
