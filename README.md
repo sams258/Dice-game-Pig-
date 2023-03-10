@@ -11,9 +11,9 @@
 - If the player rolls a 1, their turn ends and they receive no points.                                       
 - If the player rolls any other number, they can choose to roll again or hold to keep score.                                                              
 - If a player chooses to hold their turn, total is added to their score.
-- If the player chooses to player against the computer, the player should choose Game difficulty 
-which weill reflect the inteliigence of the computer player. 
-- The player may choose from two options, 1 for easy mode  and 2 for hard mode. 
+- If the player chooses to play against the computer, the player should choose Game difficulty 
+which will reflect the inteliigence of the computer player. 
+- The player may choose from two options, 1 for easy mode and 2 for hard mode. 
 - If the player decided to play in easy mode, 
 the computer will stop rolling when it reaches score of 15 in that round 
 or it rolls a 1 and that round score will be 0.
