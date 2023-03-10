@@ -15,7 +15,7 @@
 
 ## 🐍 About the project
 
-###   Known issues
+### ⚠️ Known issues
 
 1- We prioritized flake8, pylint, unit testing and coverage to meet the deadline.
 <br>2- We could not generate uml diagrams automatically using pyreverse.
