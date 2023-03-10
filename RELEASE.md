@@ -58,3 +58,17 @@ v1.0.7 (2023-03-10)
 ------------------------
 
 * Fixed errors pointed out by flake8.
+
+
+
+v1.0.8 (2023-03-10)
+------------------------
+
+* Fixed errors pointed out by flake8.
+
+
+
+v1.0.9 (2023-03-10)
+------------------------
+
+* The official release of the Dice Game Pig.
