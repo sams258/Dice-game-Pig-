@@ -8,9 +8,6 @@ flake8-polyfill
 pylint
 radon
 
-# Code style
-black
-
 # Documentation
 pdoc3
 sphinx

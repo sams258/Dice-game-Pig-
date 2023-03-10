@@ -57,4 +57,4 @@ v1.0.6 (2023-03-10)
 v1.0.7 (2023-03-10)
 ------------------------
 
-* Fixed error pointed out by flake8.
+* Fixed errors pointed out by flake8.

@@ -72,16 +72,6 @@ lint: flake8 pylint
 
 
 # ---------------------------------------------------------
-# Work with codestyle.
-#
-black:
-	@$(call MESSAGE,$@)
-	 $(PYTHON) -m black pig/ test/
-
-codestyle: black
-
-
-# ---------------------------------------------------------
 # Work with unit test and code coverage.
 #
 unittest:
@@ -100,26 +90,26 @@ test: lint coverage
 # ---------------------------------------------------------
 # Work with generating documentation.
 #
-.PHONY: pydoc
-pydoc:
-	@$(call MESSAGE,$@)
-	install -d doc/pydoc
-	$(PYTHON) -m pydoc -w pig/*.py
-	mv *.html doc/pydoc
+# .PHONY: pydoc
+# pydoc:
+# 	@$(call MESSAGE,$@)
+# 	install -d doc/pydoc
+# 	$(PYTHON) -m pydoc -w pig/*.py
+# 	mv *.html doc/pydoc
 
 pdoc:
 	@$(call MESSAGE,$@)
 	pdoc --force --html --output-dir doc/pdoc pig/*.py
 
-pyreverse:
-	@$(call MESSAGE,$@)
-	install -d doc/pyreverse
-	pyreverse pig/*.py
-	dot -Tpng classes.dot -o doc/pyreverse/classes.png
-	dot -Tpng packages.dot -o doc/pyreverse/packages.png
-	rm -f classes.dot packages.dot
+# pyreverse:
+# 	@$(call MESSAGE,$@)
+# 	install -d doc/pyreverse
+# 	pyreverse pig/*.py
+# 	dot -Tpng classes.dot -o doc/pyreverse/classes.png
+# 	dot -Tpng packages.dot -o doc/pyreverse/packages.png
+# 	rm -f classes.dot packages.dot
 
-doc: pdoc pyreverse #pydoc sphinx
+# doc: pdoc pyreverse #pydoc sphinx
 
 
 
