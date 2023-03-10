@@ -133,10 +133,10 @@ class Game:
     def check_win_condition(self, player):
         """Check if the player has won the game.
 
-    Args:
-        player (Player): The player to check for winning.
+        Args:
+            player (Player): The player to check for winning.
 
-    Returns:
+        Returns:
         bool: True if the player has won, False otherwise.
         """
         if player.total_score >= 100:
@@ -169,8 +169,8 @@ class Game:
     def play_again(self):
         """Ask the player if they want to play again.
 
-    If the player chooses to play again, starts a new game.
-    Otherwise, ends the game.
+        If the player chooses to play again, starts a new game.
+        Otherwise, ends the game.
         """
         while True:
             try:
