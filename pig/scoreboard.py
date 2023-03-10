@@ -3,19 +3,24 @@ import json
 
 
 class Scoreboard:
-    """_summary_."""
+    """
+    This module contains the Scoreboard class.
+    """
 
     def __init__(self):
-        """_summary_."""
+        """
+        Initializes a new instance of the Scoreboard class.
+        """
         self.scores = {}
         self.load_scores()
 
     def add_score(self, name, score):
-        """_summary_.
+        """
+        Adds a score for the specified player.
 
         Args:
-            name (_type_): _description_
-            score (_type_): _description_
+            name (str): The name of the player.
+            score (int): The score to be added.
         """
         if name in self.scores:
             self.scores[name]["scores"].append(score)
@@ -25,10 +30,11 @@ class Scoreboard:
         self.save_scores()
 
     def get_high_scores(self):
-        """_summary_.
+        """
+        Returns the high scores of all players.
 
         Returns:
-            _type_: _description_
+            list: A list of tuples containing the player name, high score, and number of games played.
         """
         high_scores = []
         for name, data in self.scores.items():
@@ -38,7 +44,9 @@ class Scoreboard:
         return high_scores
 
     def load_scores(self):
-        """_summary_."""
+        """
+        Loads the scores from the scores.json file.
+        """
         try:
             with open("pig/scores.json", "r", encoding='utf-8') as file:
                 self.scores = json.load(file)
@@ -46,35 +54,41 @@ class Scoreboard:
             self.scores = {}
 
     def save_scores(self):
-        """_summary_."""
+        """
+        Saves the scores to the scores.json file.
+        """
         with open("pig/scores.json", "w", encoding='utf-8') as file:
             json.dump(self.scores, file)
 
     def get_player_score(self, name):
-        """_summary_.
+        """
+        Returns the total score of the specified player.
 
         Args:
-            name (_type_): _description_
+            name (str): The name of the player.
 
         Returns:
-            _type_: _description_
+            int: The total score of the player.
         """
         if name in self.scores:
             return sum(self.scores[name]["scores"])
         return 0
 
     def change_player_name(self, old_name, new_name):
-        """_summary_.
+        """
+        Changes the name of a player.
 
         Args:
-            old_name (_type_): _description_
-            new_name (_type_): _description_
+            old_name (str): The current name of the player.
+            new_name (str): The new name of the player.
         """
         if old_name in self.scores:
             self.scores[new_name] = self.scores.pop(old_name)
             self.save_scores()
 
     def clear(self):
-        """_summary_."""
+        """
+        Clears the scores.
+        """
         self.scores = {}
         self.save_scores()

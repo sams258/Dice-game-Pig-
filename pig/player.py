@@ -7,25 +7,27 @@ from histogram import Histogram
 
 # pylint: disable=R0903
 class Player:
-    """_summary_."""
+    """This module contains the Player class."""
 
     def __init__(self, name):
-        """_summary_.
+        """
+        Initializes a new instance of the Player class.
 
         Args:
-            name (_type_): _description_
+            name (str): The name of the player.
         """
         self.name = name
         self.total_score = 0
 
     def take_turn(self):
-        """_summary_.
+        """
+        Rolls dice for the player's turn and returns their turn score.
 
         Raises:
-            ValueError: _description_
+            ValueError: If an invalid input is provided.
 
         Returns:
-            _type_: _description_
+            int: The player's turn score.
         """
         turn_score = 0
         while True:
