@@ -1,0 +1,26 @@
+digraph "packages" {
+rankdir=BT
+charset="utf-8"
+"computer_player" [color="black", label=<computer_player>, shape="box", style="solid"];
+"game" [color="black", label=<game>, shape="box", style="solid"];
+"histogram" [color="black", label=<histogram>, shape="box", style="solid"];
+"main" [color="black", label=<main>, shape="box", style="solid"];
+"player" [color="black", label=<player>, shape="box", style="solid"];
+"print" [color="black", label=<print>, shape="box", style="solid"];
+"scoreboard" [color="black", label=<scoreboard>, shape="box", style="solid"];
+"computer_player" -> "histogram" [arrowhead="open", arrowtail="none"];
+"computer_player" -> "player" [arrowhead="open", arrowtail="none"];
+"computer_player" -> "print" [arrowhead="open", arrowtail="none"];
+"game" -> "computer_player" [arrowhead="open", arrowtail="none"];
+"game" -> "histogram" [arrowhead="open", arrowtail="none"];
+"game" -> "player" [arrowhead="open", arrowtail="none"];
+"game" -> "print" [arrowhead="open", arrowtail="none"];
+"game" -> "scoreboard" [arrowhead="open", arrowtail="none"];
+"histogram" -> "print" [arrowhead="open", arrowtail="none"];
+"main" -> "computer_player" [arrowhead="open", arrowtail="none"];
+"main" -> "game" [arrowhead="open", arrowtail="none"];
+"main" -> "player" [arrowhead="open", arrowtail="none"];
+"main" -> "scoreboard" [arrowhead="open", arrowtail="none"];
+"player" -> "histogram" [arrowhead="open", arrowtail="none"];
+"player" -> "print" [arrowhead="open", arrowtail="none"];
+}

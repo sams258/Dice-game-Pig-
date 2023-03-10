@@ -26,7 +26,8 @@ class ComputerPlayer(Player):
         Args:
             name (str): The name of the player.
             difficulty (str): The difficulty level of the computer player,
-                either "easy" or "hard"."""
+                either "easy" or "hard".
+        """
         super().__init__(name)
         self.difficulty = difficulty
 

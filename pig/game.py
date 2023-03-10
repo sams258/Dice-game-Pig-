@@ -48,7 +48,7 @@ class Game:
                 if self.check_win_condition(player):
                     self.game_over = True
                     return
-                
+
     def add_players(self):
         """Add players to the game."""
         if self.players:
@@ -65,19 +65,22 @@ class Game:
                 continue
             while True:
                 try:
-                    new_name = input("\nDo you want to change your name in Highscores? (y/n) ")
+                    new_name = input("\nDo you want to change your "
+                                     "name in Highscores? (y/n) ")
                     if new_name.lower() == "y":
                         if player.name in self.scoreboard.scores:
                             self.change_player_name(player)
                         else:
-                            Print.print_sleep("\nPlayer name not found in Highscores.")
+                            Print.print_sleep("\nPlayer name not "
+                                              "found in Highscores.")
                             break
                     elif new_name.lower() == "n":
                         break
                     else:
                         raise ValueError
                 except ValueError:
-                    Print.print_sleep("\nInvalid input. Please enter 'y' or 'n'.")
+                    Print.print_sleep("\nInvalid input. "
+                                      "Please enter 'y' or 'n'.")
 
     def change_player_name(self, player):
         """Change the name of a player in the game."""
@@ -90,12 +93,16 @@ class Game:
         """Get the game mode from the user."""
         while True:
             try:
-                game_mode = input("\nDo you want to play against the computer or another human player? Choose 1 for computer or 2 for human. ")
+                game_mode = input("\nDo you want to play against the computer"
+                                  "or another human player? "
+                                  "Choose 1 for computer or 2 for human. ")
                 if game_mode not in ["1", "2"]:
                     raise ValueError
                 break
-            except:
-                Print.print_sleep("\nInvalid input. Please choose 1 for computer or 2 for human.")
+            except ValueError:
+                Print.print_sleep("\nInvalid input. "
+                                  "Please choose "
+                                  "1 for computer or 2 for human.")
         if game_mode == "1":
             difficulty = self.get_computer_difficulty()
             name = input("\nEnter your name: ")
@@ -106,12 +113,14 @@ class Game:
         """Get the computer difficulty from the user."""
         while True:
             try:
-                difficulty = input("\nChoose difficulty: 1 for easy or 2 for hard. ")
+                difficulty = input("\nChoose difficulty: "
+                                   "1 for easy or 2 for hard. ")
                 if difficulty not in ["1", "2"]:
                     raise ValueError
                 break
-            except:
-                Print.print_sleep("\nInvalid input. Please choose 1 for easy or 2 for hard.")
+            except ValueError:
+                Print.print_sleep("\nInvalid input."
+                                  "Please choose 1 for easy or 2 for hard.")
             self.computer_difficulty = difficulty
 
     def get_player_names(self):
@@ -120,7 +129,7 @@ class Game:
         self.players.append(Player(name1))
         name2 = input("\nEnter Player 2's name: ")
         self.players.append(Player(name2))
-        
+
     def check_win_condition(self, player):
         """Check if the player has won the game.
 
@@ -129,14 +138,14 @@ class Game:
 
     Returns:
         bool: True if the player has won, False otherwise.
-    """
+        """
         if player.total_score >= 100:
             return True
         else:
             return False
 
     def end_game(self):
-        """Prints the winner of the game and ends the game."""
+        """Print the winner of the game and ends the game."""
         winner_score = -1
         winner_name = ""
         for player in self.players:
@@ -158,11 +167,11 @@ class Game:
         self.play_again()
 
     def play_again(self):
-        """Asks the player if they want to play again.
+        """Ask the player if they want to play again.
 
     If the player chooses to play again, starts a new game.
     Otherwise, ends the game.
-    """
+        """
         while True:
             try:
                 choice = input("\nDo you want to play again? (y/n) ")

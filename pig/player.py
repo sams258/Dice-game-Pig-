@@ -11,7 +11,7 @@ class Player:
 
     def __init__(self, name):
         """
-        Initializes a new instance of the Player class.
+        Initialize a new instance of the Player class.
 
         Args:
             name (str): The name of the player.
@@ -21,7 +21,7 @@ class Player:
 
     def take_turn(self):
         """
-        Rolls dice for the player's turn and returns their turn score.
+        Roll dice for the player's turn and returns their turn score.
 
         Raises:
             ValueError: If an invalid input is provided.

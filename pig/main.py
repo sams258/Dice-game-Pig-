@@ -12,13 +12,16 @@ class Main:
     """The main class for the Pig game."""
 
     def __init__(self):
-        """Initializes a new instance of the Main class with a new Game and empty player_name and scoreboard."""
+        """Initialize a new instance of the Main.
+
+        class with a new Game and empty player_name and scoreboard.
+        """
         self.game = Game()
         self.player_name = ""
         self.scoreboard = Scoreboard()
 
     def display_menu(self):
-        """Displays the main menu of the game."""
+        """Display the main menu of the game."""
         print("+" + "-" * 35 + "+")
         print("|" + " " * 13 + "PIG MENU" + " " * 14 + "|")
         print("+" + "-" * 35 + "+")
@@ -32,7 +35,10 @@ class Main:
         print("+" + "-" * 35 + "+")
 
     def start(self):
-        """Starts the Pig game and waits for user input to navigate the game menus."""
+        """Start the Pig game.
+
+        and waits for user input to navigate the game menus.
+        """
         while True:
             self.display_menu()
             try:
@@ -58,7 +64,10 @@ class Main:
                 self.display_menu()
 
     def start_game(self):
-        """Starts a new game of Pig and allows the user to choose the game mode and players."""
+        """Start a new game of Pig.
+
+        and allows the user to choose the game mode and players.
+        """
         while True:
             try:
                 mode_choice = int(
@@ -108,7 +117,7 @@ class Main:
         self.game.start()
 
     def show_rules(self):
-        """Displays the rules of the Pig game."""
+        """Display the rules of the Pig game."""
         os.system("cls")
         print("+" + "-" * 64 + "+")
         print("|" + " " * 29 + "RULES" + " " * 30 + "|")
@@ -165,7 +174,7 @@ class Main:
         input("\nPress Enter to continue...")
 
     def show_high_scores(self):
-        """Displays the high scores of the Pig game."""
+        """Display the high scores of the Pig game."""
         os.system("cls")
         print("+" + "-" * 35 + "+")
         print(
@@ -193,7 +202,7 @@ class Main:
         print("\nGame restarted.\n")
 
     def exit_game(self):
-        """Exits the Pig game."""
+        """Exit the Pig game."""
         print("\nThanks for playing!")
         sys.exit()
 

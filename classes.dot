@@ -1,0 +1,16 @@
+digraph "classes" {
+rankdir=BT
+charset="utf-8"
+"computer_player.ComputerPlayer" [color="black", fontcolor="black", label=<{ComputerPlayer|difficulty<br ALIGN="LEFT"/>total_score<br ALIGN="LEFT"/>|take_turn()<br ALIGN="LEFT"/>}>, shape="record", style="solid"];
+"game.Game" [color="black", fontcolor="black", label=<{Game|computer_difficulty<br ALIGN="LEFT"/>game_over : bool<br ALIGN="LEFT"/>players : list<br ALIGN="LEFT"/>round : int<br ALIGN="LEFT"/>scoreboard<br ALIGN="LEFT"/>|add_players()<br ALIGN="LEFT"/>change_names()<br ALIGN="LEFT"/>change_player_name(player)<br ALIGN="LEFT"/>check_win_condition(player)<br ALIGN="LEFT"/>end_game()<br ALIGN="LEFT"/>get_computer_difficulty()<br ALIGN="LEFT"/>get_game_mode()<br ALIGN="LEFT"/>get_player_names()<br ALIGN="LEFT"/>play_again()<br ALIGN="LEFT"/>play_round()<br ALIGN="LEFT"/>start()<br ALIGN="LEFT"/>}>, shape="record", style="solid"];
+"histogram.Histogram" [color="black", fontcolor="black", label=<{Histogram|rolls : dict<br ALIGN="LEFT"/>|add_roll(roll)<br ALIGN="LEFT"/>clear()<br ALIGN="LEFT"/>display()<br ALIGN="LEFT"/>set_cheat()<br ALIGN="LEFT"/>}>, shape="record", style="solid"];
+"main.Main" [color="black", fontcolor="black", label=<{Main|game<br ALIGN="LEFT"/>player_name : str<br ALIGN="LEFT"/>scoreboard<br ALIGN="LEFT"/>|display_menu()<br ALIGN="LEFT"/>exit_game()<br ALIGN="LEFT"/>restart_game()<br ALIGN="LEFT"/>show_high_scores()<br ALIGN="LEFT"/>show_rules()<br ALIGN="LEFT"/>start()<br ALIGN="LEFT"/>start_game()<br ALIGN="LEFT"/>}>, shape="record", style="solid"];
+"player.Player" [color="black", fontcolor="black", label=<{Player|name<br ALIGN="LEFT"/>total_score : int<br ALIGN="LEFT"/>|take_turn()<br ALIGN="LEFT"/>}>, shape="record", style="solid"];
+"print.Print" [color="black", fontcolor="black", label=<{Print|<br ALIGN="LEFT"/>|print_sleep()<br ALIGN="LEFT"/>}>, shape="record", style="solid"];
+"scoreboard.Scoreboard" [color="black", fontcolor="black", label=<{Scoreboard|scores : dict<br ALIGN="LEFT"/>|add_score(name, score)<br ALIGN="LEFT"/>change_player_name(old_name, new_name)<br ALIGN="LEFT"/>clear()<br ALIGN="LEFT"/>get_high_scores()<br ALIGN="LEFT"/>get_player_score(name)<br ALIGN="LEFT"/>load_scores()<br ALIGN="LEFT"/>save_scores()<br ALIGN="LEFT"/>}>, shape="record", style="solid"];
+"computer_player.ComputerPlayer" -> "player.Player" [arrowhead="empty", arrowtail="none"];
+"game.Game" -> "main.Main" [arrowhead="diamond", arrowtail="none", fontcolor="green", label="game", style="solid"];
+"game.Game" -> "main.Main" [arrowhead="diamond", arrowtail="none", fontcolor="green", label="game", style="solid"];
+"scoreboard.Scoreboard" -> "game.Game" [arrowhead="diamond", arrowtail="none", fontcolor="green", label="scoreboard", style="solid"];
+"scoreboard.Scoreboard" -> "main.Main" [arrowhead="diamond", arrowtail="none", fontcolor="green", label="scoreboard", style="solid"];
+}

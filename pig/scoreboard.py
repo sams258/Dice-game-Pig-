@@ -3,20 +3,16 @@ import json
 
 
 class Scoreboard:
-    """
-    This module contains the Scoreboard class.
-    """
+    """This module contains the Scoreboard class."""
 
     def __init__(self):
-        """
-        Initializes a new instance of the Scoreboard class.
-        """
+        """Initialize a new instance of the Scoreboard class."""
         self.scores = {}
         self.load_scores()
 
     def add_score(self, name, score):
         """
-        Adds a score for the specified player.
+        Add a score for the specified player.
 
         Args:
             name (str): The name of the player.
@@ -31,10 +27,11 @@ class Scoreboard:
 
     def get_high_scores(self):
         """
-        Returns the high scores of all players.
+        Return the high scores of all players.
 
         Returns:
-            list: A list of tuples containing the player name, high score, and number of games played.
+            list: A list of tuples containing the player name,
+            high score, and number of games played.
         """
         high_scores = []
         for name, data in self.scores.items():
@@ -44,9 +41,7 @@ class Scoreboard:
         return high_scores
 
     def load_scores(self):
-        """
-        Loads the scores from the scores.json file.
-        """
+        """Load the scores from the scores.json file."""
         try:
             with open("pig/scores.json", "r", encoding='utf-8') as file:
                 self.scores = json.load(file)
@@ -54,15 +49,13 @@ class Scoreboard:
             self.scores = {}
 
     def save_scores(self):
-        """
-        Saves the scores to the scores.json file.
-        """
+        """Save the scores to the scores.json file."""
         with open("pig/scores.json", "w", encoding='utf-8') as file:
             json.dump(self.scores, file)
 
     def get_player_score(self, name):
         """
-        Returns the total score of the specified player.
+        Return the total score of the specified player.
 
         Args:
             name (str): The name of the player.
@@ -76,7 +69,7 @@ class Scoreboard:
 
     def change_player_name(self, old_name, new_name):
         """
-        Changes the name of a player.
+        Change the name of a player.
 
         Args:
             old_name (str): The current name of the player.
@@ -87,8 +80,6 @@ class Scoreboard:
             self.save_scores()
 
     def clear(self):
-        """
-        Clears the scores.
-        """
+        """Clear the scores."""
         self.scores = {}
         self.save_scores()
