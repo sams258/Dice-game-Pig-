@@ -9,16 +9,16 @@ from computer_player import ComputerPlayer
 
 
 class Main:
-    """_summary_."""
+    """The main class for the Pig game."""
 
     def __init__(self):
-        """_summary_."""
+        """Initializes a new instance of the Main class with a new Game and empty player_name and scoreboard."""
         self.game = Game()
         self.player_name = ""
         self.scoreboard = Scoreboard()
 
     def display_menu(self):
-        """_summary_."""
+        """Displays the main menu of the game."""
         print("+" + "-" * 35 + "+")
         print("|" + " " * 13 + "PIG MENU" + " " * 14 + "|")
         print("+" + "-" * 35 + "+")
@@ -32,7 +32,7 @@ class Main:
         print("+" + "-" * 35 + "+")
 
     def start(self):
-        """_summary_."""
+        """Starts the Pig game and waits for user input to navigate the game menus."""
         while True:
             self.display_menu()
             try:
@@ -58,12 +58,7 @@ class Main:
                 self.display_menu()
 
     def start_game(self):
-        """_summary_.
-
-        Raises:
-            ValueError: _description_
-            ValueError: _description_
-        """
+        """Starts a new game of Pig and allows the user to choose the game mode and players."""
         while True:
             try:
                 mode_choice = int(
@@ -113,7 +108,7 @@ class Main:
         self.game.start()
 
     def show_rules(self):
-        """_summary_."""
+        """Displays the rules of the Pig game."""
         os.system("cls")
         print("+" + "-" * 64 + "+")
         print("|" + " " * 29 + "RULES" + " " * 30 + "|")
@@ -170,7 +165,7 @@ class Main:
         input("\nPress Enter to continue...")
 
     def show_high_scores(self):
-        """_summary_."""
+        """Displays the high scores of the Pig game."""
         os.system("cls")
         print("+" + "-" * 35 + "+")
         print(
@@ -192,13 +187,13 @@ class Main:
         print("+" + "-" * 35 + "+")
 
     def restart_game(self):
-        """_summary_."""
+        """Restarts the Pig game."""
         self.game = Game()
         self.player_name = ""
         print("\nGame restarted.\n")
 
     def exit_game(self):
-        """_summary_."""
+        """Exits the Pig game."""
         print("\nThanks for playing!")
         sys.exit()
 
