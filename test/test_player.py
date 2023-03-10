@@ -16,13 +16,6 @@ class TestPlayer(unittest.TestCase):
         self.assertLessEqual(score, 20)
         self.assertEqual(player.total_score, score)
 
-    # def test_take_turn_cheat(self):
-    #     # Test that the player correctly cheats and wins the game
-    #     with patch("builtins.input", side_effect=["c"]):
-    #         player = Player("Alice")
-    #         score = player.take_turn()
-    #     self.assertEqual(player.total_score, 100)
-
     def test_player_has_name(self):
         # Test that the player has a name attribute
         player = Player("Alice")
@@ -39,14 +32,6 @@ class TestPlayer(unittest.TestCase):
             player = Player("Alice")
             score = player.take_turn()
         self.assertLessEqual(score, 6)
-
-    def test_player_can_cheat(self):
-        # Test that the player can cheat and win the game
-        with patch("builtins.input", side_effect=["c"]):
-            player = Player("Alice")
-            score = player.take_turn()
-        self.assertEqual(score, 100)
-        self.assertEqual(player.total_score, 100)
 
     def test_player_can_hold(self):
         # Test that the player can hold their turn

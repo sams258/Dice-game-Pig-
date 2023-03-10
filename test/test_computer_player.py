@@ -3,6 +3,7 @@ import unittest
 sys.path.append("pig")
 from unittest.mock import patch
 from pig.computer_player import ComputerPlayer
+from io import StringIO
 
 
 class TestComputerPlayer(unittest.TestCase):
@@ -67,6 +68,27 @@ class TestComputerPlayer(unittest.TestCase):
         with patch("builtins.input", side_effect=["h"]):
             score = player.take_turn()
         self.assertGreaterEqual(player.total_score, 100)
+
+    @patch('random.randint', return_value=1)
+    @patch('builtins.input', side_effect=["yes"])
+    @patch('sys.stdout', new_callable=StringIO)
+    def test_take_turn_loses_turn(self, mock_stdout, mock_input, mock_randint):
+        player = ComputerPlayer("Test", "easy")
+        expected_output = "Test rolled a [1]\nTest lost their turn!\n"
+        self.assertEqual(player.take_turn(), 0)
+        self.assertEqual(mock_stdout.getvalue(), expected_output)
+
+    @patch('random.randint', side_effect=[4])
+    @patch('builtins.input', side_effect=["yes", "no"])
+    @patch('sys.stdout', new_callable=StringIO)
+    def test_take_turn_updates_total_score(self, mock_stdout, mock_input, mock_randint):
+        self.player = ComputerPlayer("Test", "easy")
+        expected_output = "Test rolled a [4]\nTest's current turn score: 4\n" \
+                          "Test's total score: 4\n" 
+                          #"current turn score: 3\n"
+        self.assertEqual(self.player.take_turn(), 4)
+        self.assertEqual(mock_stdout.getvalue(), expected_output)
+        self.assertEqual(self.player.total_score, 4)
 
 
 if __name__ == "__main__":

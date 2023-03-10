@@ -1,7 +1,6 @@
 import unittest
 import io
 import sys
-import time
 from unittest.mock import patch
 from pig.print import Print
 

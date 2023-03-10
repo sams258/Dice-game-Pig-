@@ -1,6 +1,7 @@
 import sys
 sys.path.append("pig")
 import unittest
+from unittest.mock import patch
 from pig.scoreboard import Scoreboard
 
 
@@ -66,29 +67,10 @@ class TestScoreboard(unittest.TestCase):
             },
         )
 
-    # def test_get_player_stats(self):
-    #     self.scoreboard.add_score("Alice", 10)
-    #     self.scoreboard.add_score("Alice", 20)
-    #     self.scoreboard.add_score("Bob", 30)
-    #     self.scoreboard.add_score("Bob", 40)
-    #     self.assertEqual(
-    #         self.scoreboard.get_player_score("Alice"),
-    #         {
-    #             "name": "Alice",
-    #             "scores": [10, 20],
-    #             "games_played": 2,
-    #             "average_score": 15,
-    #         },
-    #     )
-    #     self.assertEqual(
-    #         self.scoreboard.get_player_score("Bob"),
-    #         {"name": "Bob", "scores": [30, 40], "games_played": 2, "average_score": 35},
-    #     )
-    #     self.assertEqual(
-    #         self.scoreboard.get_player_score("Charlie"),
-    #         {"name": "Charlie", "scores": [], "games_played": 0, "average_score": 0},
-    #     )
-
+    def test_load_missing_scores_file(self):
+        with patch('builtins.open', side_effect=FileNotFoundError):
+            self.scoreboard.load_scores()
+        self.assertEqual(self.scoreboard.scores, {})    
 
 if __name__ == "__main__":
     unittest.main

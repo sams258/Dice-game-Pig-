@@ -41,71 +41,151 @@ class Game:
                 if self.check_win_condition(player):
                     self.game_over = True
                     return
-
+                
     def add_players(self):
-        """_summary_."""
         if self.players:
-            for i, player in enumerate(self.players):
-                Print.print_sleep(f"\nPlayer {i + 1}: {player.name}")
-                if isinstance(player, ComputerPlayer):
-                    continue
-                while True:
-                    try:
-                        new_name = input("\nDo you want to change your name?"
-                                         "(y/n) ")
-                        if new_name.lower() == "y":
-                            new_name = input("\nEnter your new name: ")
-                            player_name_stats = (
-                                self.scoreboard.scores.pop(player.name)
-                            )
-                            player.name = new_name
-                            self.scoreboard.scores[new_name] = (
-                                player_name_stats
-                            )
-                        elif new_name.lower() == "n":
-                            break
-                        else:
-                            raise ValueError
-                    except ValueError:
-                        Print.print_sleep("\nInvalid input. Please enter "
-                                          "'y' or 'n'.")
+            self.change_names()
             return
+        self.get_game_mode()
+        self.get_player_names()
+
+    def change_names(self):
+        for i, player in enumerate(self.players):
+            Print.print_sleep(f"Player {i + 1}: {player.name}")
+            if isinstance(player, ComputerPlayer):
+                continue
+            while True:
+                try:
+                    new_name = input("\nDo you want to change your name in Highscores? (y/n) ")
+                    if new_name.lower() == "y":
+                        if player.name in self.scoreboard.scores:
+                            self.change_player_name(player)
+                        else:
+                            Print.print_sleep("\nPlayer name not found in Highscores.")
+                            break
+                    elif new_name.lower() == "n":
+                        break
+                    else:
+                        raise ValueError
+                except ValueError:
+                    Print.print_sleep("\nInvalid input. Please enter 'y' or 'n'.")
+
+    def change_player_name(self, player):
+        new_name = input("\nEnter your new name: ")
+        player_name_stats = self.scoreboard.scores.pop(player.name)
+        player.name = new_name
+        self.scoreboard.scores[new_name] = player_name_stats
+
+    def get_game_mode(self):
         while True:
             try:
-                game_mode = input(
-                    "\nDo you want to play against the computer or another"
-                    " human player? Choose 1 for computer or 2 for human. "
-                )
+                game_mode = input("\nDo you want to play against the computer or another human player? Choose 1 for computer or 2 for human. ")
                 if game_mode not in ["1", "2"]:
                     raise ValueError
                 break
-            except ValueError:
-                Print.print_sleep(
-                    "\nInvalid input. Please choose "
-                    "1 for computer or 2 for human."
-                )
+            except:
+                Print.print_sleep("\nInvalid input. Please choose 1 for computer or 2 for human.")
         if game_mode == "1":
-            while True:
-                try:
-                    difficulty = input(
-                        "\nChoose difficulty: 1 for easy or 2 for hard. "
-                    )
-                    if difficulty not in ["1", "2"]:
-                        raise ValueError
-                    break
-                except ValueError:
-                    Print.print_sleep(
-                        "\nInvalid input. Please "
-                        "choose 1 for easy or 2 for hard."
-                    )
+            difficulty = self.get_computer_difficulty()
             name = input("\nEnter your name: ")
             self.players.append(Player(name))
             self.players.append(ComputerPlayer("Computer", difficulty))
-        else:
-            name1 = input("\nEnter Player 1's name: ")
-            self.players.append(Player(name1))
-            name2 = input("\nEnter Player 2's name: ")
-            self.players.append(Player(name2))
+
+    def get_computer_difficulty(self):
+        while True:
+            try:
+                difficulty = input("\nChoose difficulty: 1 for easy or 2 for hard. ")
+                if difficulty not in ["1", "2"]:
+                    raise ValueError
+                break
+            except:
+                Print.print_sleep("\nInvalid input. Please choose 1 for easy or 2 for hard.")
+            self.computer_difficulty = difficulty
+
+    def get_player_names(self):
+        name1 = input("\nEnter Player 1's name: ")
+        self.players.append(Player(name1))
+        name2 = input("\nEnter Player 2's name: ")
+        self.players.append(Player(name2))
+        
+    # def add_players(self):
+    #     """_summary_."""
+    #     if self.players:
+    #         for i, player in enumerate(self.players):
+    #             Print.print_sleep(f"\nPlayer {i + 1}: {player.name}")
+    #             if isinstance(player, ComputerPlayer):
+    #                 continue
+    #             while True:
+    #                 try:
+    #                     new_name = input("\nDo you want to change your name in Highscores?"
+    #                                      " (y/n) ")
+    #                     if new_name.lower() == "y":
+    #                         if player.name in self.scoreboard.scores:
+    #                             self.change_player_name(player)
+    #                         else:
+    #                             Print.print_sleep("\nName not found in Highscores.")
+    #                             break
+    #                     elif new_name.lower() == "n":
+    #                         break
+    #                     else:
+    #                         raise ValueError
+    #                 except ValueError:
+    #                     Print.print_sleep("\nInvalid input. Please enter 'y' or 'n'.")
+                            
+                           
+                            
+    #                         input("\nEnter your new name: ")
+    #                         player_name_stats = (
+    #                             self.scoreboard.scores.pop(player.name)
+    #                         )
+    #                         player.name = new_name
+    #                         self.scoreboard.scores[new_name] = (
+    #                             player_name_stats
+    #                         )
+    #                     elif new_name.lower() == "n":
+    #                         break
+    #                     else:
+    #                         raise ValueError
+    #                 except ValueError:
+    #                     Print.print_sleep("\nInvalid input. Please enter "
+    #                                       "'y' or 'n'.")
+    #         return
+    #     while True:
+    #         try:
+    #             game_mode = input(
+    #                 "\nDo you want to play against the computer or another"
+    #                 " human player? Choose 1 for computer or 2 for human. "
+    #             )
+    #             if game_mode not in ["1", "2"]:
+    #                 raise ValueError
+    #             break
+    #         except ValueError:
+    #             Print.print_sleep(
+    #                 "\nInvalid input. Please choose "
+    #                 "1 for computer or 2 for human."
+    #             )
+    #     if game_mode == "1":
+    #         while True:
+    #             try:
+    #                 difficulty = input(
+    #                     "\nChoose difficulty: 1 for easy or 2 for hard. "
+    #                 )
+    #                 if difficulty not in ["1", "2"]:
+    #                     raise ValueError
+    #                 break
+    #             except ValueError:
+    #                 Print.print_sleep(
+    #                     "\nInvalid input. Please "
+    #                     "choose 1 for easy or 2 for hard."
+    #                 )
+    #         name = input("\nEnter your name: ")
+    #         self.players.append(Player(name))
+    #         self.players.append(ComputerPlayer("Computer", difficulty))
+    #     else:
+    #         name1 = input("\nEnter Player 1's name: ")
+    #         self.players.append(Player(name1))
+    #         name2 = input("\nEnter Player 2's name: ")
+    #         self.players.append(Player(name2))
 
     def check_win_condition(self, player):
         """_summary_.

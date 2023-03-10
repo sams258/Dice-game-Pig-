@@ -1,6 +1,5 @@
 """This module contains the Main class."""
 
-
 import sys
 import os
 from game import Game
@@ -184,12 +183,12 @@ class Main:
         print("+" + "-" * 35 + "+")
         high_scores = self.scoreboard.get_high_scores()
         if not high_scores:
-            print("|" + " " * 12 + "No high scores yet." + " " * 12 + "|")
-            print("+" + "-" * 32 + "+")
+            print("|" + " " * 7 + "No high scores yet." + " " * 9 + "|")
+            print("+" + "-" * 35 + "+")
             return
         for i, score in enumerate(high_scores):
             print(f"| {i+1}. {score[0]:<{25-len(self.player_name)}}"
-                  "{score[1]:>4} |")
+                  f"{score[1]:>4}  |")
         print("+" + "-" * 35 + "+")
 
     def restart_game(self):

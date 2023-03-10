@@ -11,6 +11,18 @@ class TestHistogram(unittest.TestCase):
     def setUp(self):
         Histogram.clear()
 
+    @classmethod
+    def setUpClass(cls):
+        cls.rolls = {1: 2, 2: 4, 3: 6, 4: 4, 5: 2, 6: 2}
+
+    @patch('sys.stdout', new_callable=StringIO)
+    def test_display(self, mock_stdout):
+        expected_output = "\nHistogram of Rolls:\n1: **\n2: ****\n3: " \
+                          "******\n4: ****\n5: **\n6: **\n"
+        self.assertEqual(mock_stdout.getvalue(), '')
+        self.display()
+        self.assertEqual(mock_stdout.getvalue(), expected_output)
+    
     def test_add_roll(self):
         Histogram.add_roll(1)
         self.assertEqual(Histogram.rolls, {1: 1, 2: 0, 3: 0, 4: 0, 5: 0, 6: 0})

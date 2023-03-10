@@ -45,7 +45,7 @@ class Player:
                 while True:
                     try:
                         choice = input("Do you want to Roll or Hold?"
-                                       "(r/h) ")
+                                       " (r/h) ")
 
                         if choice.lower() not in ["r", "h", "c"]:
                             raise ValueError
