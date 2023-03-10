@@ -15,17 +15,17 @@
 
 ## 🐍 About the project
 
-### ⚠️ Known issues
-
-1- We prioritized flake8, pylint, unit testing and coverage to meet the deadline.
-<br>2- We could not generate uml diagrams automatically using pyreverse.
-<br>3- We used longer functions in our main classes since we started without knowing about TDD.
-
 ### 📝 The assignment
 
 This is assignment two of **Methods for Sustainable Programming** course **DA115B**.
 <br>The project is created and maintained by Ahmed Radwan and Sam El Saati.
 <br>Programming Language used: Python.
+
+### ⚠️ Known issues
+
+1- We prioritized flake8, pylint, unit testing and coverage to meet the deadline.
+<br>2- We could not generate uml diagrams automatically using pyreverse.
+<br>3- We used longer functions in our main classes since we started without knowing about TDD.
 
 ### 🙏 To respect the given deadline:
 We decided not to test (game.py, main.py) as they are our main classes.
