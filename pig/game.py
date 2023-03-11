@@ -164,28 +164,5 @@ class Game:
             print(f"{score[0]}: {score[1]}")
         Histogram.display()
 
-        self.play_again()
-
-    def play_again(self):
-        """Ask the player if they want to play again.
-
-        If the player chooses to play again, starts a new game.
-        Otherwise, ends the game.
-        """
-        while True:
-            try:
-                choice = input("\nDo you want to play again? (y/n) ")
-                if choice.lower() not in ["y", "n"]:
-                    raise ValueError
-                break
-            except ValueError:
-                Print.print_sleep("\nInvalid input. Please enter 'y' or 'n'.")
-        if choice.lower() == "y":
-            self.players.clear()
-            self.round = 0
-            self.game_over = False
-            self.add_players()
-            self.start()
-        else:
-            Print.print_sleep("\nThanks for playing!")
-            sys.exit()
+        Print.print_sleep("\nThanks for playing!")
+        sys.exit()

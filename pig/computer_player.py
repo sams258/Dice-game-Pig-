@@ -60,6 +60,8 @@ class ComputerPlayer(Player):
                     Print.print_sleep(f"{self.name}'s total score: "
                                       f"{self.total_score}")
                     return turn_score
+                else:
+                    continue
 
             if self.difficulty == "hard":
                 if turn_score >= (25 - len(str(self.total_score))):
@@ -67,6 +69,8 @@ class ComputerPlayer(Player):
                     Print.print_sleep(f"{self.name}'s total score: "
                                       f"{self.total_score}")
                     return turn_score
+                else:
+                    continue
 
             self.total_score += turn_score
             Print.print_sleep(f"{self.name}'s total score: {self.total_score}")
