@@ -1,5 +1,6 @@
 """This module contains the Scoreboard class."""
 import json
+import os
 
 
 class Scoreboard:
@@ -50,6 +51,10 @@ class Scoreboard:
 
     def save_scores(self):
         """Save the scores to the scores.json file."""
+        # create the pig directory if it doesn't exist
+        os.makedirs('pig', exist_ok=True)
+
+        # open the scores.json file in write mode
         with open("pig/scores.json", "w", encoding='utf-8') as file:
             json.dump(self.scores, file)
 
