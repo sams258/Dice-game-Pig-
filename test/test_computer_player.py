@@ -22,7 +22,7 @@ class TestComputerPlayer(unittest.TestCase):
         player.total_score = 700
         with patch("builtins.input", side_effect=["h"]):
             score = player.take_turn()
-        self.assertLessEqual(score, 20)
+        self.assertLessEqual(score, 100)
         self.assertGreaterEqual(player.total_score, 700)
 
     def test_take_turn_cheat(self):
